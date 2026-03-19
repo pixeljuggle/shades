@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Shades",
   "description": "Apply dark mode, sepia, night, and custom colour themes to any website.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "permissions": ["storage", "scripting"],
   "host_permissions": ["<all_urls>"],
   "background": {
