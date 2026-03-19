@@ -1,8 +1,12 @@
 export type ThemeName = 'default' | 'dark' | 'sepia' | 'night' | 'custom'
 
 export interface CustomColors {
-  /** Tint colour used as the multiply-blend overlay for the custom theme */
-  bg: string
+  brightness: number  // 0–200, default 100
+  contrast:   number  // 0–200, default 100
+  sepia:      number  // 0–100, default 0
+  hueRotate:  number  // 0–360, default 0
+  invert:     number  // 0–100, default 0
+  saturate:   number  // 0–200, default 100
 }
 
 export interface StoredSettings {
@@ -13,8 +17,25 @@ export interface StoredSettings {
 export const DEFAULT_SETTINGS: StoredSettings = {
   theme: 'default',
   customColors: {
-    bg: '#f5e6c8', // warm cream default
+    brightness: 100,
+    contrast:   100,
+    sepia:      0,
+    hueRotate:  0,
+    invert:     0,
+    saturate:   100,
   },
+}
+
+/** Build a CSS filter string from a CustomColors record. */
+export function buildFilter(c: CustomColors): string {
+  return [
+    `brightness(${c.brightness}%)`,
+    `contrast(${c.contrast}%)`,
+    `sepia(${c.sepia}%)`,
+    `hue-rotate(${c.hueRotate}deg)`,
+    `invert(${c.invert}%)`,
+    `saturate(${c.saturate}%)`,
+  ].join(' ')
 }
 
 export interface ThemeConfig {

@@ -34,17 +34,55 @@
     </section>
 
     <section class="custom-panel" id="customPanel" hidden>
-      <h2>Tint colour</h2>
-      <p class="custom-hint">Applied as a colour wash over the page.</p>
+      <h2>Custom Filters</h2>
 
-      <label class="color-row">
-        <span>Tint</span>
-        <input type="color" id="colorBg" />
-      </label>
+      <div class="slider-row">
+        <label for="sliderBrightness">
+          <span>Brightness</span><span id="valBrightness" class="slider-val">100</span>
+        </label>
+        <input type="range" id="sliderBrightness" min="0" max="200" step="1" value="100" />
+      </div>
+
+      <div class="slider-row">
+        <label for="sliderContrast">
+          <span>Contrast</span><span id="valContrast" class="slider-val">100</span>
+        </label>
+        <input type="range" id="sliderContrast" min="0" max="200" step="1" value="100" />
+      </div>
+
+      <div class="slider-row">
+        <label for="sliderSepia">
+          <span>Sepia</span><span id="valSepia" class="slider-val">0</span>
+        </label>
+        <input type="range" id="sliderSepia" min="0" max="100" step="1" value="0" />
+      </div>
+
+      <div class="slider-row">
+        <label for="sliderHueRotate">
+          <span>Hue Rotate</span><span id="valHueRotate" class="slider-val">0</span>
+        </label>
+        <input type="range" id="sliderHueRotate" min="0" max="360" step="1" value="0" />
+      </div>
+
+      <div class="slider-row">
+        <label for="sliderInvert">
+          <span>Invert</span><span id="valInvert" class="slider-val">0</span>
+        </label>
+        <input type="range" id="sliderInvert" min="0" max="100" step="1" value="0" />
+      </div>
+
+      <div class="slider-row">
+        <label for="sliderSaturate">
+          <span>Saturate</span><span id="valSaturate" class="slider-val">100</span>
+        </label>
+        <input type="range" id="sliderSaturate" min="0" max="200" step="1" value="100" />
+      </div>
+
+      <button class="reset-btn" id="resetBtn">Reset</button>
 
       <div class="preview">
         <div class="preview-page" id="previewPage">
-          <span class="preview-text">Sample text</span>
+          <p class="preview-text">The quick brown fox jumps over the lazy dog.</p>
         </div>
       </div>
     </section>

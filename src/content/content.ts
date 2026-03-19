@@ -1,7 +1,6 @@
 import type { StoredSettings, ThemeName, CustomColors } from '../types/index'
-import { DEFAULT_SETTINGS } from '../types/index'
+import { DEFAULT_SETTINGS, buildFilter } from '../types/index'
 
-const OVERLAY_ID = 'gdm-overlay'
 const ATTR = 'data-gdm-theme'
 
 function setThemeAttr(theme: ThemeName): void {
@@ -12,44 +11,36 @@ function setThemeAttr(theme: ThemeName): void {
   }
 }
 
-function applyCustomColors(colors: CustomColors): void {
-  let overlay = document.getElementById(OVERLAY_ID) as HTMLDivElement | null
-  if (!overlay) {
-    overlay = document.createElement('div')
-    overlay.id = OVERLAY_ID
-    Object.assign(overlay.style, {
-      position: 'fixed',
-      inset: '0',
-      zIndex: '2147483647',
-      pointerEvents: 'none',
-      mixBlendMode: 'multiply',
-      transition: 'background 0.2s',
-    })
-    document.documentElement.appendChild(overlay)
+function applyCustomFilter(colors: CustomColors): void {
+  document.documentElement.style.filter = buildFilter(colors)
+}
+
+function clearCustomFilter(): void {
+  document.documentElement.style.filter = ''
+}
+
+function apply(stored: Partial<StoredSettings>): void {
+  const settings: StoredSettings = {
+    theme: stored.theme ?? DEFAULT_SETTINGS.theme,
+    // Spread over defaults handles old { bg: string } format gracefully —
+    // the unknown key is ignored, new keys get their default values.
+    customColors: { ...DEFAULT_SETTINGS.customColors, ...(stored.customColors ?? {}) },
   }
-  overlay.style.background = colors.bg
-}
-
-function removeOverlay(): void {
-  document.getElementById(OVERLAY_ID)?.remove()
-}
-
-function apply(settings: StoredSettings): void {
   setThemeAttr(settings.theme)
   if (settings.theme === 'custom') {
-    applyCustomColors(settings.customColors)
+    applyCustomFilter(settings.customColors)
   } else {
-    removeOverlay()
+    clearCustomFilter()
   }
 }
 
 chrome.storage.sync.get(DEFAULT_SETTINGS, (stored) => {
-  apply(stored as StoredSettings)
+  apply(stored as Partial<StoredSettings>)
 })
 
 chrome.storage.onChanged.addListener((_changes, area) => {
   if (area !== 'sync') return
   chrome.storage.sync.get(DEFAULT_SETTINGS, (stored) => {
-    apply(stored as StoredSettings)
+    apply(stored as Partial<StoredSettings>)
   })
 })

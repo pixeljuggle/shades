@@ -131,25 +131,53 @@ h1 {
   margin-top: -4px;
 }
 
-.color-row {
+/* ---- Sliders ---- */
+
+.slider-row {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.slider-row label {
+  display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  font-size: 11px;
+  color: #555;
+}
+
+.slider-val {
+  font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+  font-size: 11px;
+  color: #888;
+  min-width: 28px;
+  text-align: right;
+}
+
+.slider-row input[type="range"] {
+  width: 100%;
   cursor: pointer;
+  accent-color: #4285f4;
 }
 
-.color-row span {
-  color: #333;
-}
+/* ---- Reset button ---- */
 
-.color-row input[type="color"] {
-  width: 32px;
-  height: 24px;
+.reset-btn {
+  align-self: flex-end;
+  padding: 3px 10px;
+  font-size: 11px;
+  background: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 1px;
   cursor: pointer;
-  background: none;
+  color: #555;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.reset-btn:hover {
+  border-color: #4285f4;
+  color: #4285f4;
 }
 
 /* ---- Live preview ---- */
@@ -158,16 +186,16 @@ h1 {
   border-radius: 6px;
   overflow: hidden;
   border: 1px solid #ddd;
-  background: #fff;  /* white base so multiply blend is visible */
+  background: #fff;
 }
 
 .preview-page {
-  padding: 10px 10px;
-  mix-blend-mode: multiply;
-  transition: background 0.2s;
+  padding: 10px;
+  transition: filter 0.15s;
 }
 
 .preview-text {
   font-size: 12px;
   color: #333;
+  line-height: 1.5;
 }
