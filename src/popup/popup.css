@@ -1,0 +1,171 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  width: 280px;
+  background: #f8f8f8;
+  color: #222;
+}
+
+.app {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ---- Header ---- */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: #1a73e8;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* ---- Theme buttons ---- */
+
+.themes {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.theme-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 5px 2px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.theme-btn:hover {
+  border-color: #bbb;
+}
+
+.theme-btn.active {
+  border-color: #4285f4;
+}
+
+/* ---- Swatches ---- */
+
+.swatch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+.swatch svg {
+  width: 18px;
+  height: 18px;
+}
+
+.swatch--default { background: #ffffff; color: #555; }
+.swatch--dark    { background: #1a1a1a; color: #e0e0e0; }
+.swatch--sepia   { background: #f5e6c8; color: #5f4b32; }
+.swatch--night   { background: #000000; color: #cccccc; }
+.swatch--custom  { background: linear-gradient(135deg, #ddeeff 50%, #f5dde0 50%); color: #336; }
+
+/* ---- Labels ---- */
+
+.label {
+  font-size: 10px;
+  color: #555;
+  text-align: center;
+}
+
+.theme-btn.active .label {
+  color: #4285f4;
+  font-weight: 600;
+}
+
+/* ---- Custom panel ---- */
+
+.custom-panel {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-panel h2 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.custom-hint {
+  font-size: 11px;
+  color: #888;
+  margin-top: -4px;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.color-row span {
+  color: #333;
+}
+
+.color-row input[type="color"] {
+  width: 32px;
+  height: 24px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1px;
+  cursor: pointer;
+  background: none;
+}
+
+/* ---- Live preview ---- */
+
+.preview {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  background: #fff;  /* white base so multiply blend is visible */
+}
+
+.preview-page {
+  padding: 10px 10px;
+  mix-blend-mode: multiply;
+  transition: background 0.2s;
+}
+
+.preview-text {
+  font-size: 12px;
+  color: #333;
+}

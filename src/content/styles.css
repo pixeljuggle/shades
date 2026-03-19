@@ -1,0 +1,33 @@
+/* ============================================================
+   Docs Theme — content styles
+   Filter applied to html element catches EVERY element,
+   including dynamically created ones and fixed-position UI.
+   ============================================================ */
+
+html[data-gdm-theme="dark"] {
+  filter: invert(90%) hue-rotate(180deg);
+}
+
+html[data-gdm-theme="night"] {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+html[data-gdm-theme="sepia"] {
+  filter: sepia(45%) brightness(96%);
+}
+
+/* Re-invert media elements in dark/night so they look natural */
+html[data-gdm-theme="dark"] img,
+html[data-gdm-theme="dark"] video,
+html[data-gdm-theme="dark"] iframe,
+html[data-gdm-theme="night"] img,
+html[data-gdm-theme="night"] video,
+html[data-gdm-theme="night"] iframe {
+  filter: invert(100%) hue-rotate(180deg);
+}
+
+/* Native dark scrollbars for dark/night */
+html[data-gdm-theme="dark"],
+html[data-gdm-theme="night"] {
+  color-scheme: dark;
+}

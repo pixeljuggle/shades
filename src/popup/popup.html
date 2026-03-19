@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shades</title>
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <span class="logo" id="headerIcon"></span>
+      <h1>Shades</h1>
+    </header>
+
+    <section class="themes">
+      <button class="theme-btn" data-theme="default" aria-label="Default theme">
+        <span class="swatch swatch--default" id="icon-default"></span>
+        <span class="label">Default</span>
+      </button>
+      <button class="theme-btn" data-theme="dark" aria-label="Dark theme">
+        <span class="swatch swatch--dark" id="icon-dark"></span>
+        <span class="label">Dark</span>
+      </button>
+      <button class="theme-btn" data-theme="sepia" aria-label="Sepia theme">
+        <span class="swatch swatch--sepia" id="icon-sepia"></span>
+        <span class="label">Sepia</span>
+      </button>
+      <button class="theme-btn" data-theme="night" aria-label="Night theme">
+        <span class="swatch swatch--night" id="icon-night"></span>
+        <span class="label">Night</span>
+      </button>
+      <button class="theme-btn" data-theme="custom" aria-label="Custom theme">
+        <span class="swatch swatch--custom" id="icon-custom"></span>
+        <span class="label">Custom</span>
+      </button>
+    </section>
+
+    <section class="custom-panel" id="customPanel" hidden>
+      <h2>Tint colour</h2>
+      <p class="custom-hint">Applied as a colour wash over the page.</p>
+
+      <label class="color-row">
+        <span>Tint</span>
+        <input type="color" id="colorBg" />
+      </label>
+
+      <div class="preview">
+        <div class="preview-page" id="previewPage">
+          <span class="preview-text">Sample text</span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script type="module" src="./popup.ts"></script>
+</body>
+</html>
