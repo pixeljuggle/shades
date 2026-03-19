@@ -87,7 +87,30 @@ npm run build
 npm run dev
 ```
 
-The compiled extension is output to `dist/`. Load it in Chrome via `chrome://extensions` → **Load unpacked** → select the `dist` folder.
+The compiled extension is output to `shades-ext/`. Load it in Chrome via `chrome://extensions` → **Load unpacked** → select the `shades-ext` folder.
+
+## Releases
+
+GitHub releases are created automatically from version tags.
+
+1. Update the version in `package.json` and `manifest.json` so they match.
+2. Commit the version change.
+3. Push a tag in the format `vX.Y.Z`, for example `v1.0.1`.
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+The release workflow will:
+
+1. Install dependencies.
+2. Build the extension into `shades-ext/`.
+3. Verify the tag version matches `package.json` and `manifest.json`.
+4. Create `shades-ext-vX.Y.Z.zip`.
+5. Publish a GitHub release with that zip attached.
+
+When you download the asset, it extracts to a top-level `shades-ext/` directory that can be loaded directly as an unpacked extension.
 
 **Stack:** TypeScript · Vite · [@crxjs/vite-plugin](https://crxjs.dev/vite-plugin) · [Lucide](https://lucide.dev) icons
 
