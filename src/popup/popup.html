@@ -34,7 +34,21 @@
     </section>
 
     <section class="custom-panel" id="customPanel" hidden>
-      <h2>Custom Filters</h2>
+
+      <!-- Presets -->
+      <div class="presets-section">
+        <h2>Presets</h2>
+        <div class="presets-row" id="presetsRow"></div>
+        <div class="save-preset-row">
+          <input type="text" id="presetNameInput" class="preset-name-input" placeholder="Name this preset…" maxlength="24" />
+          <button id="savePresetBtn" class="save-preset-btn">Save</button>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Sliders -->
+      <h2>Filters</h2>
 
       <div class="slider-row">
         <label for="sliderBrightness">
@@ -78,13 +92,34 @@
         <input type="range" id="sliderSaturate" min="0" max="200" step="1" value="100" />
       </div>
 
+      <div class="slider-row">
+        <label for="sliderGrayscale">
+          <span>Grayscale</span><span id="valGrayscale" class="slider-val">0</span>
+        </label>
+        <input type="range" id="sliderGrayscale" min="0" max="100" step="1" value="0" />
+      </div>
+
       <button class="reset-btn" id="resetBtn">Reset</button>
 
-      <div class="preview">
-        <div class="preview-page" id="previewPage">
-          <p class="preview-text">The quick brown fox jumps over the lazy dog.</p>
-        </div>
-      </div>
+      <hr class="divider" />
+
+      <!-- Toggles -->
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="toggle-title">Re-invert images &amp; video</span>
+          <span class="toggle-hint">Keeps media looking natural when Invert is on</span>
+        </span>
+        <input type="checkbox" id="reinvertMedia" class="toggle-checkbox" />
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-label">
+          <span class="toggle-title">Smooth transitions</span>
+          <span class="toggle-hint">Fades filter changes instead of snapping</span>
+        </span>
+        <input type="checkbox" id="smoothTransition" class="toggle-checkbox" />
+      </label>
+
     </section>
   </div>
   <script type="module" src="./popup.ts"></script>

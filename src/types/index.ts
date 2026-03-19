@@ -7,11 +7,20 @@ export interface CustomColors {
   hueRotate:  number  // 0–360, default 0
   invert:     number  // 0–100, default 0
   saturate:   number  // 0–200, default 100
+  grayscale:  number  // 0–100, default 0
+}
+
+export interface Preset {
+  name: string
+  colors: CustomColors
 }
 
 export interface StoredSettings {
   theme: ThemeName
   customColors: CustomColors
+  presets: Preset[]
+  reinvertMedia: boolean
+  smoothTransition: boolean
 }
 
 export const DEFAULT_SETTINGS: StoredSettings = {
@@ -23,7 +32,11 @@ export const DEFAULT_SETTINGS: StoredSettings = {
     hueRotate:  0,
     invert:     0,
     saturate:   100,
+    grayscale:  0,
   },
+  presets: [],
+  reinvertMedia: false,
+  smoothTransition: false,
 }
 
 /** Build a CSS filter string from a CustomColors record. */
@@ -35,6 +48,7 @@ export function buildFilter(c: CustomColors): string {
     `hue-rotate(${c.hueRotate}deg)`,
     `invert(${c.invert}%)`,
     `saturate(${c.saturate}%)`,
+    `grayscale(${c.grayscale}%)`,
   ].join(' ')
 }
 
