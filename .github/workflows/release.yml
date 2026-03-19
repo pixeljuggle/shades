@@ -30,7 +30,24 @@ jobs:
 
       - name: Verify release versions
         run: |
-          node -e "const fs=require('fs'); const tag=process.env.GITHUB_REF_NAME.replace(/^v/, ''); const pkg=JSON.parse(fs.readFileSync('package.json', 'utf8')).version; const manifest=JSON.parse(fs.readFileSync('manifest.json', 'utf8')).version; if (pkg !== manifest) { console.error(`package.json version ${pkg} does not match manifest.json version ${manifest}`); process.exit(1); } if (tag !== pkg) { console.error(`tag version ${tag} does not match package.json version ${pkg}`); process.exit(1); } console.log(`Verified release version ${tag}`);"
+          node <<'EOF'
+          const fs = require('fs')
+          const tag = process.env.GITHUB_REF_NAME.replace(/^v/, '')
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8')).version
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8')).version
+
+          if (pkg !== manifest) {
+            console.error(`package.json version ${pkg} does not match manifest.json version ${manifest}`)
+            process.exit(1)
+          }
+
+          if (tag !== pkg) {
+            console.error(`tag version ${tag} does not match package.json version ${pkg}`)
+            process.exit(1)
+          }
+
+          console.log(`Verified release version ${tag}`)
+          EOF
 
       - name: Build extension
         run: npm run build
