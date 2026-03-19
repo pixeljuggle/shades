@@ -1,6 +1,14 @@
 # Shades
 
-A lightweight Chrome extension that applies comfortable reading themes — dark mode, sepia, night, and custom colour tints — to any website.
+A lightweight Chrome extension that applies comfortable reading themes — dark mode, sepia, night, and fully customisable CSS filters — to any website.
+
+---
+
+## Why I built this
+
+There are plenty of dark mode and page-tinting extensions available, but almost all of them request broad permissions and have opaque privacy practices. I wanted the same functionality with **complete confidence that nothing on any page I visit is ever read, stored, or sent anywhere**.
+
+So I built Shades myself. The entire codebase is open source and auditable. The extension does exactly one thing: inject a CSS `filter` rule onto the `<html>` element of the page you are viewing. That's it. No content scripts that read the DOM, no background requests, no analytics, no telemetry.
 
 ---
 
