@@ -3,7 +3,7 @@
   "name": "Shades",
   "description": "Apply dark mode, sepia, night, and custom colour themes to any website.",
   "version": "1.0.1",
-  "permissions": ["storage", "scripting"],
+  "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "src/background/service-worker.ts",
